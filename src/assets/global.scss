@@ -1,0 +1,23 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+  overflow: hidden;
+
+  &.container {
+    display: grid;
+    grid-template-rows: 10% 75% 15%;
+    grid-template-columns: auto;
+    grid-template-areas:
+            "navbar"
+            "main"
+            "footer";
+    margin: 0 10% 0;
+  }
+}
+
+
+
