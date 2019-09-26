@@ -1,15 +1,21 @@
+@import 'styles.scss';
+
 html, body {
   height: 100%;
   margin: 0;
+  background-image: url("background.jpg");
+  background-size: cover;
 }
 
 #app {
   height: 100%;
   overflow: hidden;
+  color: $text-primary;
+  font-family: $font;
 
   &.container {
     display: grid;
-    grid-template-rows: 10% 75% 15%;
+    grid-template-rows: 10% 70% 20%;
     grid-template-columns: auto;
     grid-template-areas:
             "navbar"
@@ -18,6 +24,5 @@ html, body {
     margin: 0 10% 0;
   }
 }
-
 
 
