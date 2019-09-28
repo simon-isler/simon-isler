@@ -23,10 +23,8 @@
         justify-items: end;
 
         .button {
-            background-color: unset;
             border-radius: 1rem;
             font-size: 1.5rem;
-            color: $text-primary;
         }
     }
 </style>

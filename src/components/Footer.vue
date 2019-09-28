@@ -1,24 +1,33 @@
 <template>
     <div class="footer">
-        <button v-for="link of links" class="button-link">{{ link.link }}</button>
+        <button class="button-link" v-for="link of links" :key="link.id" v-on:click="open_link(link.url)">
+            <font-awesome-icon :icon="['fab', link.icon]" class="icon"/>
+        </button>
     </div>
 </template>
 
 <script>
     export default {
         name: "Footer",
-        data() {
+        data: function () {
             return {
                 links: [
                     {
-                        link: 'GitHub',
-                        icon: ''
+                        name: 'Github',
+                        icon: 'github',
+                        url: 'https://github.com/simon-isler',
                     },
                     {
-                        link: 'LinkedIn',
-                        icon: ''
+                        name: 'LinkedIn',
+                        icon: 'linkedin-in',
+                        url: 'https://www.linkedin.com/in/simon-isler-940279166/',
                     },
                 ]
+            }
+        },
+        methods: {
+            open_link: function (url) {
+                window.open(url, '_blank');
             }
         }
     }
@@ -36,10 +45,12 @@
         .button-link {
             width: 4rem;
             height: 4rem;
-            background-color: unset;
-            color: $text-primary;
             border-radius: 50%;
             border: 2px solid;
+
+            .icon {
+                font-size: 1.5rem;
+            }
         }
     }
 </style>

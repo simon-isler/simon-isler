@@ -22,7 +22,7 @@ export default {
   }
 
   .title {
-    font-size: 5rem;
-    font-weight: bold;
+    font-size: 5.5rem;
+    font-weight: 500;
   }
 </style>

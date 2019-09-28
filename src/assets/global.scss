@@ -25,4 +25,9 @@ html, body {
   }
 }
 
+button {
+  background-color: unset;
+  outline:none;
+  color: $text-primary;
+}
 
