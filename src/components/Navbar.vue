@@ -1,15 +1,20 @@
 <template>
     <div class="navbar">
         <router-link to="/"></router-link>
-        <router-link to="/contact">
-            <button class="button">Say Hello</button>
+        <router-link tag="button" class="button" to="/contact" v-if="!hideButton">
+            Say Hello
         </router-link>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Navbar"
+        name: "Navbar",
+        computed: {
+            hideButton() {
+                return this.$route.name === 'contact'
+            }
+        }
     }
 </script>
 
@@ -24,7 +29,16 @@
 
         .button {
             border-radius: 1rem;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            padding: 0.5rem;
+            background-color: unset;
+
+            &:hover {
+                background-color: $lightgray;
+                transition: $button-transition;
+                color: $black;
+                border-color: $black;
+            }
         }
     }
 </style>

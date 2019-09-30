@@ -1,33 +1,30 @@
 <template>
     <div class="footer">
-        <button class="button-link" v-for="link of links" :key="link.id" v-on:click="open_link(link.url)">
-            <font-awesome-icon :icon="['fab', link.icon]" class="icon"/>
-        </button>
+        <a v-for="link of links" :key="link.id" :href="link.url" target="_blank">
+            <button class="button-link" :class="[link.name]">
+                <font-awesome-icon :icon="['fab', link.icon]" class="icon"/>
+            </button>
+        </a>
     </div>
 </template>
 
 <script>
     export default {
         name: "Footer",
-        data: function () {
+        data() {
             return {
                 links: [
                     {
-                        name: 'Github',
+                        name: 'github',
                         icon: 'github',
                         url: 'https://github.com/simon-isler',
                     },
                     {
-                        name: 'LinkedIn',
+                        name: 'linkedin',
                         icon: 'linkedin-in',
                         url: 'https://www.linkedin.com/in/simon-isler-940279166/',
                     },
                 ]
-            }
-        },
-        methods: {
-            open_link: function (url) {
-                window.open(url, '_blank');
             }
         }
     }
@@ -47,9 +44,19 @@
             height: 4rem;
             border-radius: 50%;
             border: 2px solid;
+            background-color: unset;
+            transition: $button-transition;
 
             .icon {
                 font-size: 1.5rem;
+            }
+
+            &.github:hover {
+                background-color: $github;
+            }
+
+            &.linkedin:hover {
+                background-color: $linkedin;
             }
         }
     }
