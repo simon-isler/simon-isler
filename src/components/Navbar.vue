@@ -28,16 +28,20 @@
         justify-items: end;
 
         .button {
-            border-radius: 1rem;
             font-size: 1.4rem;
-            padding: 0.5rem;
             background-color: unset;
+            padding: 0.5rem;
 
             &:hover {
-                background-color: $lightgray;
-                transition: $button-transition;
-                color: $black;
-                border-color: $black;
+                background-color: $github;
+            }
+        }
+    }
+
+    @media screen and (max-width: $mobile) {
+        .navbar {
+            .button {
+                display: none;
             }
         }
     }
