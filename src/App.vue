@@ -40,17 +40,59 @@
         grid-template-areas: "navbar" "main" "footer";
         padding: 0 10%;
 
-        button {
-            outline: none;
-        }
-
         &.home {
             background-image: url("./assets/background.jpg");
             background-size: cover;
 
-            button {
+            a, button {
                 color: $text-primary
             }
+        }
+
+        &.contact, &.pageNotFound {
+            .link:hover, .button:hover {
+                color: $text-primary;
+            }
+        }
+
+        h2 {
+            font-size: 3rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.2rem;
+        }
+
+        a {
+            color: unset;
+            transition: $transition;
+        }
+
+        button {
+            outline: none;
+            transition: $transition;
+            border-radius: 1rem;
+            border: 1.2px solid;
+        }
+
+        input {
+            padding-left: 0.5rem;
+            outline: none;
+        }
+
+        textarea {
+            padding-left: 0.5rem;
+            padding-top: 0.7rem;
+            outline: none;
+            resize: none;
         }
     }
 </style>
