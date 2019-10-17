@@ -1,14 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+$mobile: 768px;
 
 /* fonts */
 $font: 'Montserrat', sans-serif;
 
 /* colors */
 $text-primary: white;
-$lightgray: #B1B3B3FF;
-$black: black;
 $github: #333;
 $linkedin: #0077B5;
+$green: #467302;
+$darkgreen: #30400B;
+$lightgray: rgba(177, 177, 179, 0.3);
+$lightgray-hover: rgba(177, 177, 179, 0.6);
+$gray: #B1B3B3FF;
+$black: black;
 
 /* effects */
-$button-transition: all 0.4s ease 0s;
+$transition: all 0.4s ease 0s;

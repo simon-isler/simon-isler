@@ -1,9 +1,7 @@
 <template>
     <div class="footer">
-        <a v-for="link of links" :key="link.id" :href="link.url" target="_blank">
-            <button class="button-link" :class="[link.name]">
-                <font-awesome-icon :icon="['fab', link.icon]" class="icon"/>
-            </button>
+        <a v-for="link of links" :key="link.id" :href="link.url" target="_blank" class="link" :class="[link.name]">
+            <font-awesome-icon :icon="['fab', link.icon]" class="icon"/>
         </a>
     </div>
 </template>
@@ -36,18 +34,19 @@
     .footer {
         display: grid;
         grid-area: footer;
-        grid-template-columns: 90px 90px;
+        grid-template-columns: 90px auto;
         align-items: center;
 
-        .button-link {
+        .link {
             width: 4rem;
             height: 4rem;
             border-radius: 50%;
             border: 2px solid;
             background-color: unset;
-            transition: $button-transition;
+            display: grid;
 
             .icon {
+                place-self: center;
                 font-size: 1.5rem;
             }
 
