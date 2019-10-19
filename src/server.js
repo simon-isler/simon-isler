@@ -1,3 +1,4 @@
+require('dotenv').config();
 let express = require("express"),
     nodemailer = require('nodemailer'),
     bodyParser = require('body-parser'),
