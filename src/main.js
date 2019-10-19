@@ -9,7 +9,7 @@ import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const axios = Axios.create({
-    baseURL: process.env.API_URL
+    baseURL: process.env.VUE_APP_API_URL
 });
 
 library.add(faLinkedinIn, faGithub, faTimesCircle);

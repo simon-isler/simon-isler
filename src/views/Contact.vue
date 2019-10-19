@@ -99,7 +99,7 @@
                     selected_option: this.selected_option,
                 };
 
-                this.$http.post(process.env.API_URL + '/contact', postData).then((response) => {
+                this.$http.post(process.env.VUE_APP_API_URL + '/contact', postData).then((response) => {
                     this.email_sent = response.status === 200;
                 }).catch((error) => {
                     this.email_sent = false;
