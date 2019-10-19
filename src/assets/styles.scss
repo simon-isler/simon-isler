@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-$mobile: 768px;
+$mobile: 780px;
+$tablet: 990px;
 
 /* fonts */
 $font: 'Montserrat', sans-serif;
@@ -12,6 +13,7 @@ $green: #467302;
 $darkgreen: #30400B;
 $lightgray: rgba(177, 177, 179, 0.3);
 $lightgray-hover: rgba(177, 177, 179, 0.6);
+$text-muted: #6c757d;
 $gray: #B1B3B3FF;
 $black: black;
 

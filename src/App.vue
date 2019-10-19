@@ -22,16 +22,19 @@
 <style lang="scss">
     @import './assets/styles.scss';
 
-    html, body {
-        height: 100vh;
+    html {
+        height: 100%;
+    }
+
+    body {
+        min-height: 100%;
         margin: 0;
-        padding: 0;
+        display: grid;
     }
 
     #app {
+        min-height: 100%;
         box-sizing: border-box;
-        width: 100vw;
-        height: 100vh;
         overflow: hidden;
         font-family: $font;
         display: grid;
