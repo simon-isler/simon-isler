@@ -19,33 +19,46 @@
         </div>
 
         <transition name="fade">
-            <div v-if="show">
-                <h2> {{ selected_option }}</h2>
-                <h5>Personal details</h5>
-                <form class="contact-form" @submit.prevent="submit">
-                    <input type="text" v-model="form.name" placeholder="Name" id="name" name="name" class="name"
-                           required>
-                    <label for="name"></label>
+            <div v-if="show" class="contact">
+                <div class="title">
+                    <h2 class="message"> {{ selected_option }}</h2>
+                    <a href="/contact" class="icon">
+                        <font-awesome-icon :icon="['far', 'times-circle']"/>
+                    </a>
+                </div>
 
-                    <input type="email" v-model="form.email" placeholder="Email" id="email" name="email" class="email"
-                           required>
-                    <label for="email"></label>
+                <div v-if="!email_sent">
+                    <h5>Personal details</h5>
+                    <form class="contact-form" @submit.prevent="submit">
+                        <input type="text" v-model="form.name" placeholder="Name" id="name" name="name" class="name"
+                               required>
+                        <label for="name"></label>
 
-                    <textarea rows="5" v-model="form.description" placeholder="What do you want to talk about?"
-                              id="description"
-                              name="description" class="description" required></textarea>
-                    <label for="description"></label>
+                        <input type="email" v-model="form.email" placeholder="Email" id="email" name="email"
+                               class="email"
+                               required>
+                        <label for="email"></label>
 
-                    <button type="submit" id="submit" class="button">Send</button>
-                </form>
+                        <textarea rows="5" v-model="form.description" placeholder="What do you want to talk about?"
+                                  id="description"
+                                  name="description" class="description" required></textarea>
+                        <label for="description"></label>
+
+                        <button id="submit" class="button">Send</button>
+                    </form>
+                </div>
+
+                <transition name="fade">
+                    <div v-if="email_sent">
+                        <h4 class="text-muted">Thank you! Your email has been sent.</h4>
+                    </div>
+                </transition>
             </div>
         </transition>
     </div>
 </template>
 
 <script>
-    import {API} from "../main";
-
     export default {
         name: "Contact",
         data() {
@@ -55,6 +68,7 @@
                     email: '',
                     description: '',
                 },
+                email_sent: false,
                 show: false,
                 selected_option: 'Tell me more about it! 😎',
                 options: [
@@ -82,16 +96,15 @@
                     name: this.form.name,
                     email: this.form.email,
                     description: this.form.description,
+                    selected_option: this.selected_option,
                 };
 
-                const axiosConfig = {
-                    headers: {
-                        'Content-Type': 'application/json;charset=UTF-8',
-                        "Access-Control-Allow-Origin": "*",
-                    }
-                };
-
-
+                this.$http.post(process.env.API_URL + '/contact', postData).then((response) => {
+                    this.email_sent = response.status === 200;
+                }).catch((error) => {
+                    this.email_sent = false;
+                    console.log(error);
+                });
             }
         }
     }
@@ -162,61 +175,103 @@
         }
     }
 
-    .contact-form {
-        display: grid;
-        grid-template-columns: 40% 40%;
-        grid-column-gap: 50px;
-        grid-row-gap: 20px;
+    .contact {
+        .title {
+            display: grid;
+            grid-template-columns: 75% 5%;
+            grid-column-gap: 50px;
 
-        input, textarea {
-            background-color: $lightgray;
-            border: none;
-            font-size: 0.9rem;
+            .icon {
+                place-self: center end;
+                font-size: 2.5rem;
 
-            &:hover {
-                background-color: $lightgray-hover;
+                &:hover {
+                    transition: $transition;
+                    color: $text-muted;
+                }
             }
         }
 
-        .name {
-            align-self: start;
-            height: 2rem;
-        }
+        .contact-form {
+            display: grid;
+            grid-template-columns: 40% 40%;
+            grid-column-gap: 50px;
+            grid-row-gap: 20px;
 
-        .email {
-            grid-row: 2;
-            height: 2rem;
-            align-self: start;
-        }
+            input, textarea {
+                background-color: $lightgray;
+                border: none;
+                font-size: 0.9rem;
 
-        .description {
-            grid-column: 2;
-            grid-row: 1 / 6;
-            outline: none;
-        }
-
-        #submit {
-            grid-column: 2;
-            justify-self: end;
-
-            &:hover {
-                background-color: $green;
+                &:hover {
+                    background-color: $lightgray-hover;
+                }
             }
+
+            .name {
+                align-self: start;
+                height: 2rem;
+            }
+
+            .email {
+                grid-row: 2;
+                height: 2rem;
+                align-self: start;
+            }
+
+            .description {
+                grid-column: 2;
+                grid-row: 1 / 6;
+                outline: none;
+            }
+
+            #submit {
+                grid-column: 2;
+                justify-self: end;
+
+                &:hover {
+                    background-color: $green;
+                }
+            }
+        }
+
+        .text-muted {
+            color: $text-muted;
+        }
+    }
+
+    @media screen and (max-width: $tablet) {
+        .contact .title .message {
+            font-size: 2.4rem !important;
         }
     }
 
     @media screen and (max-width: $mobile) {
-        .contact-form {
-            grid-template-columns: 100%;
+        .contact {
+            .title {
+                grid-template-columns: 100%;
 
-            .description {
-                grid-column: 1;
-                grid-row: 3;
+                .icon {
+                    display: none;
+                }
+
+                .message {
+                    font-size: 2rem !important;
+                }
             }
 
-            #submit {
-                grid-column: 1;
-                grid-row: 4;
+            .contact-form {
+                grid-template-columns: 100%;
+
+                .description {
+                    grid-column: 1;
+                    grid-row: 3;
+                }
+
+                #submit {
+                    grid-column: 1;
+                    grid-row: 4;
+                }
             }
         }
     }
