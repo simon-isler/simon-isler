@@ -10,3 +10,4 @@ FROM nginx:stable-alpine as production-stage
 RUN mkdir /client
 COPY --from=build-stage /client/dist /client
 COPY nginx.conf /etc/nginx/nginx.conf
+CMD ["nginx", "-g", "daemon off;"]
