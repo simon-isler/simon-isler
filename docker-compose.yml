@@ -8,8 +8,5 @@ services:
     build: client
     ports:
       - 8080:80
-    volumes:
-      - ./data/nginx.conf:/etc/nginx/nginx.conf
-      - ./data/certs:/etc/nginx/certs
     depends_on:
       - server

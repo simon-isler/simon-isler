@@ -7,6 +7,5 @@ COPY ./ .
 RUN npm run build
 
 FROM nginx:stable-alpine as production-stage
-RUN mkdir /client
-COPY --from=build-stage /client/dist /client
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 80
+COPY --from=build-stage /client/dist /usr/share/nginx/html
