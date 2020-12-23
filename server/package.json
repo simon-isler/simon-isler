@@ -4,6 +4,7 @@
   "description": "",
   "main": "api/index.js",
   "scripts": {
+    "start": "nodemon api/index.js",
     "lint": "eslint api/**/*.js"
   },
   "dependencies": {

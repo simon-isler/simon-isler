@@ -5,7 +5,7 @@ const app = express();
 const routes = require('./routes');
 require('dotenv').config();
 
-app.use(cors());
+app.use(cors({ origin: process.env.CORS_WHITELIST.split(',') || [] }));
 app.use(bodyParser.json());
 
 app.use('/api', routes);
