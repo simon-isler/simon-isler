@@ -3,6 +3,10 @@ const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 
+router.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 router.post('/send_email', [
   body('option').not().isEmpty().trim().escape(),
   body('name').not().isEmpty().trim().escape(),

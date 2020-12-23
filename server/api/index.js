@@ -10,5 +10,4 @@ app.use(bodyParser.json());
 
 app.use('/api', routes);
 
-const port = process.env.APP_PORT || 8081;
-app.listen(port);
+module.exports = app;
