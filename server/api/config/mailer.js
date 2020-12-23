@@ -17,9 +17,9 @@ const transporter = nodemailer.createTransport({
 
 transporter.use('compile', handlebars({
   viewEngine: {
-    layoutsDir: './src/views/layouts'
+    layoutsDir: './api/views/layouts'
   },
-  viewPath: './src/views/'
+  viewPath: './api/views/'
 }));
 
 const mailOptions = (templateContext) => {
