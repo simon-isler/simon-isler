@@ -11,7 +11,7 @@ router.post('/send_email', [
   body('option').not().isEmpty().trim().escape(),
   body('name').not().isEmpty().trim().escape(),
   body('email').isEmail().normalizeEmail(),
-  body('description').not().isEmpty().trim().escape(),
+  body('description').not().isEmpty().trim().escape()
 ], (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -20,6 +20,7 @@ router.post('/send_email', [
 
   const { option, name, email, description } = req.body;
   const emailContext = { option, name, email, description };
+
   transporter.sendMail(mailOptions(emailContext), (error, info) => {
     if (error) {
       return console.log(error);

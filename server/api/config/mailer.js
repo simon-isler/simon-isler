@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-const handlebars = require('nodemailer-express-handlebars');
 require('dotenv').config();
 
 const transporter = nodemailer.createTransport({
@@ -15,20 +14,24 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-transporter.use('compile', handlebars({
-  viewEngine: {
-    layoutsDir: './api/views/layouts'
-  },
-  viewPath: './api/views/'
-}));
+const mailContent = ({ option, name, email, description }) => {
+  return `
+    <p>New contact request received from simonisler.ch! 😎</p><hr>
+    <p>Selected option: ${option}</p>
+    <ul>
+        <li>Name: ${name}</li>
+        <li>Email: ${email}</li>
+        <li>Description: ${description}</li>
+    </ul>
+    `;
+};
 
-const mailOptions = (templateContext) => {
+const mailOptions = (params) => {
   return {
     from: process.env.MAIL_USERNAME,
     to: process.env.MAIL_RECIPIENT,
     subject: 'simon-isler | contact',
-    template: 'contact_request',
-    context: templateContext
+    html: mailContent(params)
   };
 };
 
