@@ -33,7 +33,7 @@
                     </a>
                 </div>
 
-                <div v-if="!email_sent">
+                <div v-if="!emailSent">
                     <h5>Personal details</h5>
                     <form class="contact-form" @submit.prevent="sendEmail">
                         <input type="text" v-model="form.name" placeholder="Name" id="name" name="name" class="name"
@@ -49,15 +49,12 @@
                                   id="description" name="description" class="description" required/>
                         <label for="description"/>
 
-                        <h5 v-if="showErrors" class="error-msg">
-                          There was an error while submitting. Please make sure that you correctly filled out all fields.
-                        </h5>
                         <button type="submit" id="submit" class="button">Send</button>
                     </form>
                 </div>
 
                 <transition name="fade">
-                    <div v-if="email_sent">
+                    <div v-if="emailSent">
                         <h4 class="text-muted">Thank you! Your email has been sent.</h4>
                     </div>
                 </transition>
@@ -77,8 +74,7 @@
                     description: '',
                     option: 0,
                 },
-                email_sent: false,
-                showErrors: false,
+                emailSent: false,
                 show: false,
                 options: [
                     {
@@ -101,12 +97,8 @@
         },
         methods: {
           sendEmail() {
-            this.$http.post('/send_email', this.form)
-                .then(() => this.email_sent = true)
-                .catch((errors) => {
-                  this.showErrors = true;
-                  console.error(errors);
-                });
+            this.emailSent = true;
+            this.$http.post('/send_email', this.form);
           }
         }
     }
