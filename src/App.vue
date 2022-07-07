@@ -15,7 +15,7 @@
             <div class="pt-3 md:pt-6 w-full">
               <p>
                 I'm a Software Developer based in Zurich. I'm currently studying at the University of Applied Sciences
-                in Winterthur.0
+                in Winterthur.
                 Next to my studies, I'm working part-time
                 <a href="https://renuo.ch" class="text-brown underline underline-offset-2 font-medium">@ Renuo</a>.
               </p>
