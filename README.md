@@ -1,5 +1,4 @@
-## Hey, there! <img src="https://raw.githubusercontent.com/iampavangandhi/iampavangandhi/master/gifs/Hi.gif" width="30px">
-
+## Hey, there!
 <p align="center">
 <a href="https://simonisler.ch/"><img alt="Website" src="https://img.shields.io/badge/Website-simonisler.ch-blue?style=flat-square&logo=google-chrome"></a>
 <a href="https://www.linkedin.com/in/simon-isler-940279166/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Simon%20Isler-blue?style=flat-square&logo=linkedin"></a>
@@ -8,5 +7,6 @@
 
 ### 👨🏻‍💻 About Me
 
-- 🔭 &nbsp; Exploring new technologies and developing software solutions and quick hacks.
 - 💼 &nbsp; Working as a Software Developer in Switzerland.
+- 🔭 &nbsp; Exploring new technologies and developing software solutions.
+- 📚 &nbsp; Studying Computer Science at the University of Applied Sciences in Winterthur (ZHAW).
