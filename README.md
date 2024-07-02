@@ -8,6 +8,5 @@
 
 ### 👨🏻‍💻 About Me
 
-- 💼 &nbsp; Working as a Software Developer in Switzerland.
+- 💼 &nbsp; Working as a Software Engineer in Switzerland.
 - 🔭 &nbsp; Exploring new technologies and developing software solutions.
-- 📚 &nbsp; Studying Computer Science at the University of Applied Sciences in Winterthur (ZHAW).
